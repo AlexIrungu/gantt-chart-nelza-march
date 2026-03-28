@@ -3,27 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work Program — KP1/9A.2/0T/045/SS/23-24 | CCTV Project Timeline</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Work Programme — KP1/9A.2/0T/045/SS/23-24</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Mono:wght@400;500&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* ── Sanzo Wada Combo 263: Burnt Sienna · Pinkish Cinnamon · Turquoise Green · Slate ── */
   :root {
-    --bg: #0d0f14;
-    --surface: #13161d;
-    --surface2: #1a1e28;
-    --border: #252a38;
-    --text: #e8eaf0;
-    --muted: #5a6070;
-    --accent: #4f9cf9;
-    --accent2: #f97b4f;
-    --accent3: #4fd9a0;
-    --bar-design: #4f9cf9;
-    --bar-install: #f97b4f;
-    --bar-other: #9b7ef9;
-    --today: #f9d44f;
-    --header-h: 80px;
-    --row-h: 44px;
-    --label-w: 260px;
-    --period-w: 50px;
+    --bg:        #f7f3ee;       /* warm ivory */
+    --surface:   #ffffff;
+    --surface2:  #efe9e0;       /* tinted parchment */
+    --border:    #ddd5c8;
+    --border2:   #ccc3b5;
+    --text:      #34454c;       /* Slate Color */
+    --text-sub:  #7a8e94;
+    --muted:     #a09585;
+    --accent1:   #ae5224;       /* Burnt Sienna — design bars */
+    --accent2:   #eeb480;       /* Pinkish Cinnamon — install bars */
+    --accent3:   #b5decc;       /* Turquoise Green — other bars */
+    --accent3d:  #2a8c6e;       /* deep turquoise for text on accent3 */
+    --today:     #34454c;       /* Slate */
+    --today-bg:  rgba(52,69,76,0.06);
+    --label-w:   260px;
+    --period-w:  54px;
+    --row-h:     46px;
+    --week-w:    50px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,62 +33,154 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Syne', sans-serif;
+    font-family: 'Mulish', sans-serif;
     min-height: 100vh;
-    padding: 0;
   }
 
-  /* ── HEADER ── */
+  /* ── PAGE HEADER ── */
   .page-header {
-    padding: 32px 40px 24px;
-    border-bottom: 1px solid var(--border);
     background: var(--surface);
+    border-bottom: 2px solid var(--border2);
+    padding: 20px 40px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
+    gap: 32px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
     gap: 24px;
   }
 
-  .header-left h1 {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    color: var(--text);
+  .header-logo {
+    height: 60px;
+    width: auto;
+    flex-shrink: 0;
   }
 
-  .header-left p {
+  .header-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--border2);
+    flex-shrink: 0;
+  }
+
+  .header-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.2px;
+    line-height: 1.2;
+  }
+
+  .header-text p {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 10px;
     color: var(--muted);
-    margin-top: 4px;
+    margin-top: 5px;
     letter-spacing: 0.5px;
   }
 
   .header-right {
     display: flex;
-    gap: 24px;
+    gap: 20px;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .legend-item {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 10px;
     color: var(--muted);
+    letter-spacing: 0.3px;
   }
 
   .legend-dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 8px;
     border-radius: 2px;
     flex-shrink: 0;
   }
 
-  /* ── CHART WRAPPER ── */
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 40px;
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .stat {
+    padding: 0 28px 0 0;
+    margin-right: 28px;
+    border-right: 1px solid var(--border2);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .stat:last-child { border-right: none; }
+
+  .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent1);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .progress-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    max-width: 280px;
+    margin-left: 12px;
+  }
+
+  .progress-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .progress-track {
+    height: 5px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    border-radius: 99px;
+    transition: width 1.2s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ── CHART ── */
   .chart-outer {
-    padding: 24px 40px 40px;
+    padding: 20px 40px 48px;
     overflow-x: auto;
   }
 
@@ -94,134 +188,118 @@
     display: flex;
     flex-direction: column;
     min-width: 1300px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
   }
 
-  /* ── MONTH HEADERS ── */
+  /* Month header */
   .month-header-row {
     display: flex;
-    margin-left: var(--label-w);
     margin-left: calc(var(--label-w) + var(--period-w));
     border-bottom: 1px solid var(--border);
-    margin-bottom: 0;
+    background: var(--surface2);
   }
 
   .month-cell {
     flex: none;
-    width: calc(var(--period-w) * 4);
+    width: calc(var(--week-w) * 4);
     text-align: center;
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 500;
     color: var(--muted);
     letter-spacing: 1px;
     text-transform: uppercase;
-    padding: 6px 2px;
+    padding: 7px 2px;
     border-right: 1px solid var(--border);
-    position: relative;
   }
 
-  .month-cell::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: transparent;
-  }
+  .month-cell.cur { color: var(--accent1); font-weight: 700; }
 
-  .month-cell.has-today::after {
-    background: var(--today);
-  }
-
-  /* Week sub-headers */
+  /* Week header */
   .week-header-row {
     display: flex;
     margin-left: calc(var(--label-w) + var(--period-w));
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--border2);
+    background: var(--surface2);
   }
 
   .week-cell {
     flex: none;
-    width: var(--period-w);
+    width: var(--week-w);
     text-align: center;
     font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    color: #363d52;
+    font-size: 8px;
+    color: var(--border2);
     padding: 4px 0;
     border-right: 1px solid var(--border);
   }
 
-  .week-cell.today-col {
-    color: var(--today);
-    font-weight: 600;
-  }
-
-  /* ── ROWS ── */
+  /* Rows */
   .row {
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--border);
     min-height: var(--row-h);
-    position: relative;
-    transition: background 0.15s;
+    transition: background 0.12s;
   }
 
-  .row:hover {
-    background: rgba(255,255,255,0.02);
-  }
-
-  .row.section-header {
+  .row:last-child { border-bottom: none; }
+  .row:hover { background: rgba(174,82,36,0.03); }
+  .row.section-row {
     background: var(--surface2);
-    min-height: 32px;
+    min-height: 30px;
   }
 
   .row-label {
     flex: none;
     width: var(--label-w);
-    padding: 0 16px 0 0;
+    padding: 0 14px 0 20px;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     position: sticky;
     left: 0;
-    background: var(--bg);
-    z-index: 2;
+    background: var(--surface);
+    z-index: 3;
+    border-right: 1px solid var(--border);
   }
 
-  .row.section-header .row-label {
+  .row.section-row .row-label {
     background: var(--surface2);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
     font-weight: 700;
-    font-size: 10px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.8px;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--accent1);
   }
 
   .row-period {
     flex: none;
     width: var(--period-w);
     font-family: 'DM Mono', monospace;
-    font-size: 8.5px;
+    font-size: 8px;
     color: var(--muted);
-    text-align: right;
-    padding-right: 8px;
+    text-align: center;
+    padding: 0 6px;
     white-space: nowrap;
     overflow: hidden;
     position: sticky;
     left: var(--label-w);
-    background: var(--bg);
-    z-index: 2;
+    background: var(--surface);
+    z-index: 3;
+    border-right: 1px solid var(--border2);
+    line-height: 1.3;
   }
 
-  .row.section-header .row-period {
-    background: var(--surface2);
-  }
+  .row.section-row .row-period { background: var(--surface2); }
 
-  /* ── GRID CELLS ── */
   .grid-area {
     display: flex;
     flex: 1;
@@ -230,69 +308,52 @@
     align-items: center;
   }
 
-  .row.section-header .grid-area {
-    height: 32px;
-  }
+  .row.section-row .grid-area { height: 30px; }
 
   .grid-col {
     flex: none;
-    width: var(--period-w);
+    width: var(--week-w);
     height: 100%;
     border-right: 1px solid var(--border);
-    position: relative;
   }
 
-  .grid-col.month-start {
-    border-right: 1px solid #2a3040;
-  }
+  .grid-col.month-boundary { border-right: 1px solid var(--border2); }
+  .grid-col.today-col { background: var(--today-bg); }
 
-  .grid-col.today-col {
-    background: rgba(249, 212, 79, 0.04);
-    border-right: 1px solid rgba(249,212,79,0.3);
-  }
-
-  /* ── GANTT BAR ── */
+  /* Gantt bars */
   .gantt-bar {
     position: absolute;
-    height: 22px;
-    border-radius: 4px;
+    height: 20px;
+    border-radius: 3px;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    padding: 0 8px;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    font-weight: 500;
-    color: rgba(0,0,0,0.7);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    cursor: default;
-    transition: filter 0.2s, height 0.2s;
+    z-index: 2;
+    cursor: pointer;
+    transition: height 0.15s, filter 0.15s;
   }
 
-  .gantt-bar:hover {
-    filter: brightness(1.15);
-    height: 26px;
+  .gantt-bar:hover { height: 26px; filter: brightness(0.9); }
+
+  .gantt-bar.done { opacity: 0.38; }
+
+  .gantt-bar.active {
+    height: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
   }
 
-  /* ── TODAY LINE ── */
+  /* Today line */
   .today-line {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
+    top: 0; bottom: 0;
+    width: 1.5px;
     background: var(--today);
-    z-index: 10;
+    z-index: 6;
     pointer-events: none;
   }
 
-  .today-line::before {
-    content: 'TODAY';
+  .today-label {
     position: absolute;
-    top: -20px;
+    top: -18px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'DM Mono', monospace;
@@ -300,14 +361,15 @@
     color: var(--today);
     letter-spacing: 1px;
     white-space: nowrap;
+    font-weight: 600;
   }
 
-  /* ── TOOLTIP ── */
+  /* Tooltip */
   .tooltip {
     display: none;
     position: fixed;
-    background: var(--surface2);
-    border: 1px solid var(--border);
+    background: var(--surface);
+    border: 1px solid var(--border2);
     padding: 10px 14px;
     border-radius: 6px;
     font-family: 'DM Mono', monospace;
@@ -315,330 +377,230 @@
     color: var(--text);
     pointer-events: none;
     z-index: 1000;
-    max-width: 280px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    box-shadow: 0 6px 20px rgba(52,69,76,0.15);
+    max-width: 260px;
   }
-
-  .tooltip.visible { display: block; }
-  .tooltip-title { font-weight: 500; font-family: 'Syne', sans-serif; font-size: 12px; margin-bottom: 6px; }
-  .tooltip-period { color: var(--muted); font-size: 10px; }
-
-  /* ── STATS BAR ── */
-  .stats-row {
-    display: flex;
-    gap: 32px;
-    padding: 20px 40px;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .stat-value {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--accent);
-    letter-spacing: -1px;
-  }
-
-  .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-
-  .divider {
-    width: 1px;
-    background: var(--border);
-    margin: 0 8px;
-  }
-
-  .progress-bar-wrap {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
-    max-width: 300px;
-  }
-
-  .progress-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .progress-track {
-    height: 6px;
-    background: var(--border);
-    border-radius: 99px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent3));
-    border-radius: 99px;
-    transition: width 1s ease;
-  }
+  .tooltip.on { display: block; }
+  .tt-name { font-family: 'Mulish', sans-serif; font-weight: 700; font-size: 12px; margin-bottom: 5px; color: var(--text); }
+  .tt-period { color: var(--muted); font-size: 10px; }
+  .tt-status { margin-top: 5px; font-size: 10px; font-weight: 600; }
 </style>
 </head>
 <body>
 
 <div class="page-header">
   <div class="header-left">
-    <h1>CCTV &amp; Access Control — Work Programme</h1>
-    <p>REF: KP1/9A.2/0T/045/SS/23-24 &nbsp;·&nbsp; WORK SCHEDULE &nbsp;·&nbsp; JUNE 2024 – APRIL 2026</p>
+    <img src="data:image/png;base64,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" alt="Edson Conveyors Ltd" class="header-logo" />
+    <div class="header-divider"></div>
+    <div class="header-text">
+      <h1>CCTV &amp; Access Control — Work Programme</h1>
+      <p>REF: KP1/9A.2/0T/045/SS/23-24 &nbsp;·&nbsp; JUNE 2024 – APRIL 2026</p>
+    </div>
   </div>
   <div class="header-right">
-    <div class="legend-item"><div class="legend-dot" style="background:var(--bar-design)"></div>Design / Procurement</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--bar-install)"></div>Installation Phase</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--bar-other)"></div>Other / Testing</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--today)"></div>Today</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ae5224"></div>Design &amp; Procurement</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#eeb480"></div>Installation</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#b5decc"></div>Config &amp; Testing</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#34454c;height:12px;width:2px;border-radius:1px"></div>Today</div>
   </div>
 </div>
 
-<div class="stats-row" id="statsRow"></div>
+<div class="stats-bar" id="statsBar"></div>
 
 <div class="chart-outer">
-  <div class="chart-container" id="chartContainer"></div>
+  <div style="position:relative;padding-top:22px;">
+    <div class="chart-container" id="chart"></div>
+  </div>
 </div>
 
-<div class="tooltip" id="tooltip">
-  <div class="tooltip-title" id="ttTitle"></div>
-  <div class="tooltip-period" id="ttPeriod"></div>
+<div class="tooltip" id="tt">
+  <div class="tt-name" id="ttName"></div>
+  <div class="tt-period" id="ttPeriod"></div>
+  <div class="tt-status" id="ttStatus"></div>
 </div>
 
 <script>
-// ── DATA ──
 const projectStart = new Date('2024-06-01');
 const projectEnd   = new Date('2026-04-30');
 const today        = new Date('2026-03-28');
+const WEEK_W       = 50;
 
 const tasks = [
-  { id: 'kickoff',  label: 'Project Kick-Off Meeting & Handover', period: '03/06/24–19/06/24', start: '2024-06-03', end: '2024-06-19', type: 'other',   section: null },
-  { id: 'sec1',     label: 'DESIGN',                               period: '',                  start: null,        end: null,        type: 'section', section: null },
-  { id: 'pdr',      label: 'Preliminary Design Review (PDR)',       period: '24/06/24–05/07/24', start: '2024-06-24', end: '2024-07-05', type: 'design',  section: 'design' },
-  { id: 'procImp',  label: 'Procuring of Imported Materials',       period: '08/07/24–22/07/24', start: '2024-07-08', end: '2024-07-22', type: 'design',  section: 'design' },
-  { id: 'procLoc',  label: 'Procuring of Local Material',           period: '19/07/24–24/07/24', start: '2024-07-19', end: '2024-07-24', type: 'design',  section: 'design' },
-  { id: 'cdr',      label: 'Critical Design Review (CDR)',          period: '19/07/24–19/08/24', start: '2024-07-19', end: '2024-08-19', type: 'design',  section: 'design' },
-  { id: 'delLoc',   label: 'Delivery of Local Materials to Site',   period: '22/08/24–30/08/24', start: '2024-08-22', end: '2024-08-30', type: 'design',  section: 'design' },
-  { id: 'cabling',  label: 'Cabling and Masonry Work',              period: '27/08/24–13/12/24', start: '2024-08-27', end: '2024-12-13', type: 'design',  section: 'design' },
-  { id: 'sec2',     label: 'INSTALLATION',                          period: '',                  start: null,        end: null,        type: 'section', section: null },
-  { id: 'install',  label: 'Installation of CCTV and Access Control', period: '12/02/25–05/05/25', start: '2025-02-12', end: '2025-05-05', type: 'install', section: 'install' },
-  { id: 'fat',      label: 'FAT Training',                          period: '22/03/25–02/04/25', start: '2025-03-22', end: '2025-04-02', type: 'install', section: 'install' },
-  { id: 'config',   label: 'Configuration and Testing',             period: '30/05/25–12/02/26', start: '2025-05-30', end: '2026-02-12', type: 'other',  section: 'install' },
-  { id: 'commiss',  label: 'Commissioning',                         period: '29/03/26–02/04/26', start: '2026-03-29', end: '2026-04-02', type: 'install', section: 'install' },
+  { label:'Project Kick-Off Meeting & Handover', period:'03/06/24–19/06/24', start:'2024-06-03', end:'2024-06-19', type:'other' },
+  { label:'DESIGN & PROCUREMENT', period:'', start:null, end:null, type:'section' },
+  { label:'Preliminary Design Review (PDR)',     period:'24/06/24–05/07/24', start:'2024-06-24', end:'2024-07-05', type:'design' },
+  { label:'Procuring of Imported Materials',     period:'08/07/24–22/07/24', start:'2024-07-08', end:'2024-07-22', type:'design' },
+  { label:'Procuring of Local Material',         period:'19/07/24–24/07/24', start:'2024-07-19', end:'2024-07-24', type:'design' },
+  { label:'Critical Design Review (CDR)',         period:'19/07/24–19/08/24', start:'2024-07-19', end:'2024-08-19', type:'design' },
+  { label:'Delivery of Local Materials to Site', period:'22/08/24–30/08/24', start:'2024-08-22', end:'2024-08-30', type:'design' },
+  { label:'Cabling and Masonry Work',             period:'27/08/24–13/12/24', start:'2024-08-27', end:'2024-12-13', type:'design' },
+  { label:'INSTALLATION', period:'', start:null, end:null, type:'section' },
+  { label:'Installation of CCTV and Access Control', period:'12/02/25–05/05/25', start:'2025-02-12', end:'2025-05-05', type:'install' },
+  { label:'FAT Training',                         period:'22/03/25–02/04/25', start:'2025-03-22', end:'2025-04-02', type:'install' },
+  { label:'Configuration and Testing',            period:'30/05/25–12/02/26', start:'2025-05-30', end:'2026-02-12', type:'other' },
+  { label:'Commissioning',                        period:'29/03/26–02/04/26', start:'2026-03-29', end:'2026-04-02', type:'install' },
 ];
 
-// ── TIMELINE SETUP ──
-// Build array of months from projectStart to projectEnd
+const COLORS = {
+  design:  '#ae5224',
+  install: '#d48a50',
+  other:   '#2a8c6e',
+  section: 'transparent'
+};
+
 function monthsBetween(a, b) {
   const months = [];
   let cur = new Date(a.getFullYear(), a.getMonth(), 1);
   const end = new Date(b.getFullYear(), b.getMonth(), 1);
-  while (cur <= end) {
-    months.push(new Date(cur));
-    cur = new Date(cur.getFullYear(), cur.getMonth() + 1, 1);
-  }
+  while (cur <= end) { months.push(new Date(cur)); cur = new Date(cur.getFullYear(), cur.getMonth()+1, 1); }
   return months;
 }
 
-const months = monthsBetween(projectStart, projectEnd); // 23 months
-const WEEK_W = 50; // px per "week slot" (4 per month)
-const TOTAL_COLS = months.length * 4;
-const TOTAL_W = TOTAL_COLS * WEEK_W;
+const months = monthsBetween(projectStart, projectEnd);
+const TOTAL_W = months.length * 4 * WEEK_W;
 
-// map a date to pixel offset from start
-function dateToX(dateStr) {
-  const d = new Date(dateStr);
-  const msPerPx = (projectEnd - projectStart) / TOTAL_W;
-  return Math.max(0, (d - projectStart) / msPerPx);
+function dateToX(ds) {
+  const d = new Date(ds);
+  return Math.max(0, (d - projectStart) / (projectEnd - projectStart) * TOTAL_W);
 }
 
 function monthLabel(d) {
-  return d.toLocaleString('en', { month: 'short' }).toUpperCase() + ' ' + String(d.getFullYear()).slice(2);
+  return d.toLocaleString('en',{month:'short'}).toUpperCase() + ' ' + String(d.getFullYear()).slice(2);
 }
 
-const COLORS = { design: 'var(--bar-design)', install: 'var(--bar-install)', other: 'var(--bar-other)', section: 'transparent' };
+// Stats
+const activeTasks = tasks.filter(t=>t.type!=='section');
+const done = activeTasks.filter(t=>t.end && new Date(t.end)<today).length;
+const active = activeTasks.filter(t=>t.start && t.end && new Date(t.start)<=today && new Date(t.end)>=today).length;
+const upcoming = activeTasks.length - done - active;
+const allDates = activeTasks.filter(t=>t.start&&t.end);
+const pStart = new Date(allDates[0].start), pEnd = new Date(allDates[allDates.length-1].end);
+const pct = Math.min(100, Math.max(0, Math.round((today-pStart)/(pEnd-pStart)*100)));
 
-// ── BUILD STATS ──
-const statsRow = document.getElementById('statsRow');
-
-// calc overall progress
-const allDates = tasks.filter(t => t.start && t.end);
-const projStartDate = new Date(allDates[0].start);
-const projEndDate = new Date(allDates[allDates.length - 1].end);
-const totalDuration = projEndDate - projStartDate;
-const elapsed = today - projStartDate;
-const pct = Math.min(100, Math.max(0, Math.round(elapsed / totalDuration * 100)));
-
-// count tasks
-const taskCount = tasks.filter(t => t.type !== 'section').length;
-const completedCount = tasks.filter(t => t.end && new Date(t.end) < today && t.type !== 'section').length;
-const inProgressCount = tasks.filter(t => t.start && t.end && new Date(t.start) <= today && new Date(t.end) >= today).length;
-
-statsRow.innerHTML = `
-  <div class="stat"><div class="stat-value">${taskCount}</div><div class="stat-label">Total Activities</div></div>
-  <div class="divider"></div>
-  <div class="stat"><div class="stat-value" style="color:var(--accent3)">${completedCount}</div><div class="stat-label">Completed</div></div>
-  <div class="divider"></div>
-  <div class="stat"><div class="stat-value" style="color:var(--accent2)">${inProgressCount}</div><div class="stat-label">In Progress</div></div>
-  <div class="divider"></div>
-  <div class="stat"><div class="stat-value" style="color:var(--today)">${taskCount - completedCount - inProgressCount}</div><div class="stat-label">Upcoming</div></div>
-  <div class="divider"></div>
-  <div class="progress-bar-wrap">
+document.getElementById('statsBar').innerHTML = `
+  <div class="stat"><div class="stat-value">${activeTasks.length}</div><div class="stat-label">Activities</div></div>
+  <div class="stat"><div class="stat-value" style="color:#2a8c6e">${done}</div><div class="stat-label">Completed</div></div>
+  <div class="stat"><div class="stat-value" style="color:#ae5224">${active}</div><div class="stat-label">In Progress</div></div>
+  <div class="stat"><div class="stat-value" style="color:#7a8e94">${upcoming}</div><div class="stat-label">Upcoming</div></div>
+  <div class="progress-wrap">
     <div class="progress-label"><span>OVERALL PROGRESS</span><span>${pct}%</span></div>
-    <div class="progress-track"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+    <div class="progress-track"><div class="progress-fill" id="pf" style="width:0%"></div></div>
   </div>
 `;
+setTimeout(()=>{ document.getElementById('pf').style.width = pct+'%'; }, 300);
 
-setTimeout(() => { document.getElementById('progFill').style.width = pct + '%'; }, 200);
-
-// ── BUILD CHART ──
-const container = document.getElementById('chartContainer');
+// Build chart
+const chart = document.getElementById('chart');
 const todayX = dateToX(today.toISOString().slice(0,10));
+const LW = 260, PW = 54;
 
-// Month header
-const monthHeaderRow = document.createElement('div');
-monthHeaderRow.style.cssText = `display:flex;margin-left:${260+50}px;border-bottom:1px solid var(--border);`;
+// Month row
+const mRow = document.createElement('div');
+mRow.style.cssText = `display:flex;margin-left:${LW+PW}px;border-bottom:1px solid var(--border);background:var(--surface2);`;
 months.forEach(m => {
-  const isToday = m.getFullYear() === today.getFullYear() && m.getMonth() === today.getMonth();
-  const cell = document.createElement('div');
-  cell.style.cssText = `flex:none;width:${WEEK_W*4}px;text-align:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:${isToday ? 'var(--today)' : 'var(--muted)'};letter-spacing:1px;text-transform:uppercase;padding:6px 2px;border-right:1px solid var(--border);`;
-  cell.textContent = monthLabel(m);
-  monthHeaderRow.appendChild(cell);
+  const isCur = m.getFullYear()===today.getFullYear() && m.getMonth()===today.getMonth();
+  const c = document.createElement('div');
+  c.style.cssText = `flex:none;width:${WEEK_W*4}px;text-align:center;font-family:'DM Mono',monospace;font-size:9.5px;font-weight:${isCur?700:500};color:${isCur?'var(--accent1)':'var(--muted)'};letter-spacing:1px;text-transform:uppercase;padding:7px 2px;border-right:1px solid var(--border);`;
+  c.textContent = monthLabel(m);
+  mRow.appendChild(c);
 });
-container.appendChild(monthHeaderRow);
+chart.appendChild(mRow);
 
-// Week subheader
-const weekHeaderRow = document.createElement('div');
-weekHeaderRow.style.cssText = `display:flex;margin-left:${260+50}px;border-bottom:1px solid var(--border);`;
+// Week row
+const wRow = document.createElement('div');
+wRow.style.cssText = `display:flex;margin-left:${LW+PW}px;border-bottom:2px solid var(--border2);background:var(--surface2);`;
 months.forEach(m => {
   [1,2,3,4].forEach(w => {
-    const wk = document.createElement('div');
-    wk.style.cssText = `flex:none;width:${WEEK_W}px;text-align:center;font-family:'DM Mono',monospace;font-size:9px;color:#363d52;padding:3px 0;border-right:1px solid var(--border);`;
-    wk.textContent = `W${w}`;
-    weekHeaderRow.appendChild(wk);
+    const wc = document.createElement('div');
+    wc.style.cssText = `flex:none;width:${WEEK_W}px;text-align:center;font-family:'DM Mono',monospace;font-size:8px;color:var(--border2);padding:4px 0;border-right:1px solid var(--border);`;
+    wc.textContent = `W${w}`;
+    wRow.appendChild(wc);
   });
 });
-container.appendChild(weekHeaderRow);
+chart.appendChild(wRow);
 
 // Task rows
-tasks.forEach(task => {
+tasks.forEach(t => {
+  const isSection = t.type === 'section';
   const row = document.createElement('div');
-  row.style.cssText = `display:flex;align-items:center;border-bottom:1px solid var(--border);min-height:${task.type === 'section' ? 32 : 44}px;position:relative;`;
-  if (task.type === 'section') row.style.background = 'var(--surface2)';
+  row.className = 'row' + (isSection ? ' section-row' : '');
 
-  // Label
-  const label = document.createElement('div');
-  label.style.cssText = `flex:none;width:260px;padding:0 16px 0 0;font-size:${task.type === 'section' ? 9 : 12}px;font-weight:${task.type === 'section' ? 700 : 500};color:${task.type === 'section' ? 'var(--muted)' : 'var(--text)'};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:sticky;left:0;z-index:2;background:${task.type === 'section' ? 'var(--surface2)' : 'var(--bg)'};letter-spacing:${task.type === 'section' ? '1.5px' : 'normal'};text-transform:${task.type === 'section' ? 'uppercase' : 'none'};`;
-  label.textContent = task.label;
-  row.appendChild(label);
+  const lbl = document.createElement('div');
+  lbl.className = 'row-label';
+  lbl.textContent = t.label;
+  lbl.title = t.label;
+  row.appendChild(lbl);
 
-  // Period
-  const period = document.createElement('div');
-  period.style.cssText = `flex:none;width:50px;font-family:'DM Mono',monospace;font-size:8px;color:var(--muted);text-align:right;padding-right:8px;white-space:nowrap;overflow:hidden;position:sticky;left:260px;z-index:2;background:${task.type === 'section' ? 'var(--surface2)' : 'var(--bg)'};`;
-  period.textContent = '';
-  row.appendChild(period);
+  const per = document.createElement('div');
+  per.className = 'row-period';
+  if (!isSection) {
+    const parts = t.period.split('–');
+    per.innerHTML = parts.length===2 ? `${parts[0]}<br>${parts[1]}` : t.period;
+  }
+  row.appendChild(per);
 
-  // Grid area
   const grid = document.createElement('div');
-  grid.style.cssText = `display:flex;flex:1;position:relative;height:${task.type === 'section' ? 32 : 44}px;align-items:center;`;
+  grid.className = 'grid-area';
 
-  // Grid columns (vertical lines)
   months.forEach((m, mi) => {
-    [1,2,3,4].forEach((w, wi) => {
-      const col = document.createElement('div');
-      col.style.cssText = `flex:none;width:${WEEK_W}px;height:100%;border-right:1px solid var(--border);`;
-      grid.appendChild(col);
+    [1,2,3,4].forEach((w,wi) => {
+      const gc = document.createElement('div');
+      gc.className = 'grid-col' + (wi===3 ? ' month-boundary' : '');
+      grid.appendChild(gc);
     });
   });
 
-  // Today marker line
-  const tLine = document.createElement('div');
-  tLine.style.cssText = `position:absolute;top:0;bottom:0;left:${todayX}px;width:2px;background:rgba(249,212,79,0.5);z-index:5;pointer-events:none;`;
-  grid.appendChild(tLine);
+  // Today line
+  const tl = document.createElement('div');
+  tl.className = 'today-line';
+  tl.style.left = todayX + 'px';
+  if (!isSection) {
+    const tlbl = document.createElement('div');
+    tlbl.className = 'today-label';
+    tlbl.textContent = 'TODAY';
+    tl.appendChild(tlbl);
+  }
+  grid.appendChild(tl);
 
-  // Bar
-  if (task.start && task.end) {
-    const x1 = dateToX(task.start);
-    const x2 = dateToX(task.end);
-    const w = Math.max(x2 - x1, 8);
-    const isDone = new Date(task.end) < today;
-    const isActive = new Date(task.start) <= today && new Date(task.end) >= today;
+  if (t.start && t.end) {
+    const x1 = dateToX(t.start);
+    const x2 = dateToX(t.end);
+    const bw = Math.max(x2-x1, 6);
+    const isDone = new Date(t.end) < today;
+    const isActive = new Date(t.start) <= today && new Date(t.end) >= today;
 
     const bar = document.createElement('div');
-    bar.style.cssText = `
-      position:absolute;
-      left:${x1}px;
-      width:${w}px;
-      height:22px;
-      border-radius:4px;
-      top:50%;
-      transform:translateY(-50%);
-      z-index:3;
-      cursor:pointer;
-      transition:filter 0.2s, height 0.2s;
-      background:${COLORS[task.type]};
-      opacity:${isDone ? 0.45 : 1};
-    `;
+    bar.className = 'gantt-bar' + (isDone?' done':'') + (isActive?' active':'');
+    bar.style.cssText = `left:${x1}px;width:${bw}px;background:${COLORS[t.type]};`;
+
+    // Progress stripe on active bars
     if (isActive) {
-      bar.style.boxShadow = `0 0 12px ${COLORS[task.type]}`;
+      const elapsed = today - new Date(t.start);
+      const total = new Date(t.end) - new Date(t.start);
+      const ratio = Math.min(1, elapsed/total);
+      bar.style.background = `linear-gradient(90deg, ${COLORS[t.type]} ${ratio*100}%, ${COLORS[t.type]}88 ${ratio*100}%)`;
     }
 
     bar.addEventListener('mouseenter', e => {
-      bar.style.height = '26px';
-      bar.style.filter = 'brightness(1.2)';
-      const tt = document.getElementById('tooltip');
-      document.getElementById('ttTitle').textContent = task.label;
-      document.getElementById('ttPeriod').textContent = task.period;
-      tt.classList.add('visible');
+      const statusText = isDone ? '✓ Completed' : isActive ? '◉ In Progress' : '○ Upcoming';
+      const statusColor = isDone ? '#2a8c6e' : isActive ? '#ae5224' : '#7a8e94';
+      document.getElementById('ttName').textContent = t.label;
+      document.getElementById('ttPeriod').textContent = t.period;
+      document.getElementById('ttStatus').textContent = statusText;
+      document.getElementById('ttStatus').style.color = statusColor;
+      document.getElementById('tt').classList.add('on');
     });
     bar.addEventListener('mousemove', e => {
-      const tt = document.getElementById('tooltip');
-      tt.style.left = (e.clientX + 14) + 'px';
-      tt.style.top  = (e.clientY - 10) + 'px';
+      const tt = document.getElementById('tt');
+      tt.style.left = (e.clientX+14)+'px';
+      tt.style.top  = (e.clientY-10)+'px';
     });
-    bar.addEventListener('mouseleave', () => {
-      bar.style.height = '22px';
-      bar.style.filter = '';
-      document.getElementById('tooltip').classList.remove('visible');
-    });
-
+    bar.addEventListener('mouseleave', () => document.getElementById('tt').classList.remove('on'));
     grid.appendChild(bar);
-
-    // Progress fill on active bar
-    if (isActive) {
-      const elapsed = today - new Date(task.start);
-      const total = new Date(task.end) - new Date(task.start);
-      const fill = document.createElement('div');
-      fill.style.cssText = `
-        position:absolute;
-        left:${x1}px;
-        width:${Math.min(w, w * elapsed / total)}px;
-        height:22px;
-        border-radius:4px 0 0 4px;
-        top:50%;
-        transform:translateY(-50%);
-        z-index:4;
-        pointer-events:none;
-        background:rgba(255,255,255,0.15);
-      `;
-      grid.appendChild(fill);
-    }
   }
 
   row.appendChild(grid);
-  container.appendChild(row);
+  chart.appendChild(row);
 });
 </script>
 </body>
